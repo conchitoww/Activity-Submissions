@@ -1,17 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
+    // Add the Kotlin Android plugin
+    //highlight-start
+    alias(libs.plugins.kotlin.android) // Change this line
+    //highlight-end
 }
 
 android {
     namespace = "com.example.exercise_2_music_player"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.exercise_2_music_player"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 36 // Match compileSdk for consistency
         versionCode = 1
         versionName = "1.0"
 
@@ -30,6 +32,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    // Move kotlinOptions to be a direct child of the android block
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
